@@ -22,7 +22,7 @@ A Web interface for the BeamMP multiplayer server
 • Only the MAP currently configured on the server is present in the MOD folder, the others are placed in a separate folder to optimize MOD download and loading time.
 
 # Installation
-### prerequisites
+## prerequisites
 
 • Linux (I use Ubuntu Ubuntu 22.04 LTS)
 
