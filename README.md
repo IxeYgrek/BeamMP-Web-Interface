@@ -24,7 +24,7 @@ A Web interface for the BeamMP multiplayer server
 # Installation
 ### prerequisites
 
-• Linux (I use Ubuntu Ubuntu 22.04.4 LTS)
+• Linux (I use Ubuntu Ubuntu 22.04 LTS)
 
 • A Web server (I use Apache 8.3)
 
