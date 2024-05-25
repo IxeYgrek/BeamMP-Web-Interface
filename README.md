@@ -32,7 +32,7 @@ A Web interface for the BeamMP multiplayer server
 
 # To-do list
 
-Here are the things I'd like to add. But I don't promise to ever do it (especially the installation script)
+**Here are the things I'd like to add. But I don't promise to ever do it (especially the installation script)**
 
 • When uploading a MAP, automatically detect the MAP ID to update the BeamMP server config file.
 
