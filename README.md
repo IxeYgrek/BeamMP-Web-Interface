@@ -32,7 +32,7 @@ A Web interface for the BeamMP multiplayer server
 
 • A database (I use MySQL 8.0)
 
-• Knowledge of how to use Linux from the command line is a big advantage. Although I've tried to create a comprehensive installation guide, I don't go into detail about installing and configuring Apache or MySQL. You'll find a detailed tutorial in French [here](https://doc.ubuntu-fr.org/lamp) and in English [here](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu).
+• **Knowledge of using Linux from the command line, Apache, PHP and MySQL is a great advantage**. Although I've tried to create a comprehensive installation guide, I don't go into detail about installing and configuring Apache or MySQL. You'll find a detailed tutorial in French [here](https://doc.ubuntu-fr.org/lamp) and in English [here](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu).
 
 • Open the Web server port to make your site accessible on the Internet.
 
