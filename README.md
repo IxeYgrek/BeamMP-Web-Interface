@@ -22,6 +22,13 @@ A Web interface for the BeamMP multiplayer server
 • Only the MAP currently configured on the server is present in the MOD folder, the others are placed in a separate folder to optimize MOD download and loading time.
 
 # Installation
+### prerequisites
+
+• Linux (I use Ubuntu)
+
+• A Web server (I use Apache)
+
+• A database (I use MySQL)
 
 # To-do list
 • When uploading a MAP, automatically detect the MAP ID to update the BeamMP server config file.
