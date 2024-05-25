@@ -26,13 +26,17 @@ A Web interface for the BeamMP multiplayer server
 
 • Linux (I use Ubuntu Ubuntu 22.04 LTS)
 
-• A Web server (I use Apache 8.3)
+• A Web server (I use Apache 2.4)
 
-• PHP
+• PHP (I use 8.3 version)
 
 • A database (I use MySQL 8.0)
 
-• **Knowledge of using Linux from the command line, Apache, PHP and MySQL is a great advantage**. Although I've tried to create a comprehensive installation guide, I don't go into detail about installing and configuring Apache or MySQL. You'll find a detailed tutorial in French [here](https://doc.ubuntu-fr.org/lamp) and in English [here](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu).
+• The following PHP modules must be installed : php-mysqli, php-json, php-fileinfo & php-filter
+
+• The following Apache module must be installed : libapache2-mod-php
+
+• **Knowledge of using Linux from the command line, Apache, PHP and MySQL is a great advantage**. Although I've tried to create a comprehensive installation guide, I don't go into detail about installing and configuring Apache, PHP or MySQL. You'll find a detailed tutorial in French [here](https://doc.ubuntu-fr.org/lamp) and in English [here](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu).
 
 • Open the Web server port to make your site accessible on the Internet.
 
