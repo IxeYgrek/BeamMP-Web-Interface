@@ -30,6 +30,8 @@ A Web interface for the BeamMP multiplayer server
 
 • A database (I use MySQL)
 
+• Knowledge of how to use Linux from the command line is a big advantage. Although I've tried to create a comprehensive installation guide, I don't go into detail about installing and configuring Apache or MySQL.
+
 # To-do list
 
 **Here are the things I'd like to add. But I don't promise to ever do it (especially the installation script)**
