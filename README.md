@@ -39,3 +39,5 @@ Here are the things I'd like to add. But I don't promise to ever do it (especial
 • Multilingual management of Web interface (section titles, buttons, MOD submission form)
 
 • Creating an installation script
+
+• Support for MAPs with multiple variants in the zip file. For the moment it's possible to do this by manually inserting the other variants in the database (or perhaps by uploading the same MAP several times by changing its ID in the MOD upload form. But I haven't tried).
