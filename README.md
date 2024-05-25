@@ -31,6 +31,11 @@ A Web interface for the BeamMP multiplayer server
 • A database (I use MySQL)
 
 # To-do list
+
+Here are the things I'd like to add. But I don't promise to ever do it (especially the installation script)
+
 • When uploading a MAP, automatically detect the MAP ID to update the BeamMP server config file.
 
 • Multilingual management of Web interface (section titles, buttons, MOD submission form)
+
+• Creating an installation script
