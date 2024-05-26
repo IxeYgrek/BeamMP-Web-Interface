@@ -4,6 +4,8 @@ A Web interface for the BeamMP multiplayer server
 # Warning
 **I'm not a developer. All the PHP and CSS code was written by ChatGPT (not without difficulty...) and I took care of the Shell / Mysql part. It is therefore highly probable (not to say certain) that the code contains security flaws, particularly in terms of SQL injections and verification of uploaded files. Any help I can get to improve the code is therefore most welcome. Thanks in advance to those who do.**
 
+**This project has been designed to facilitate management of the BeamMP server by the administrator and trusted players. It is not intended for public access, and Apache authentication is strongly recommended.**
+
 # Features
 • Displays the map currently configured on the server.
 
