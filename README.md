@@ -25,6 +25,10 @@ A Web interface for the BeamMP multiplayer server
 
 • Multilingual management of the interface (and only the interface, not database content such as MOD names and descriptions). For the moment english, french, spanish and german only. Any language can be added to the lang file.
 
+# Preview
+https://youtu.be/CTFS-h224mE
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CTFS-h224mE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # Installation
 ## prerequisites
 
