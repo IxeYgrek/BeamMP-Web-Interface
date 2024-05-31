@@ -26,7 +26,7 @@ A Web interface for the BeamMP multiplayer server
 • Multilingual management of the interface (and only the interface, not database content such as MOD names and descriptions). For the moment english, french, spanish and german only. Any language can be added to the lang file.
 
 # Preview
-![Preview](https://geekz0ne.fr/beammp_web.gif)
+![Preview](https://geekz0ne.fr/1.jpg)
 
 # Installation
 ## prerequisites
