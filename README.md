@@ -27,6 +27,11 @@ A Web interface for the BeamMP multiplayer server
 
 # Preview
 ![Preview](https://geekz0ne.fr/1.jpg)
+![Preview 2](https://geekz0ne.fr/2.jpg)
+![Preview 3](https://geekz0ne.fr/3.jpg)
+![Preview 4](https://geekz0ne.fr/4.jpg)
+![Preview 5](https://geekz0ne.fr/5.jpg)
+![Preview 6](https://geekz0ne.fr/6.jpg)
 
 # Installation
 ## prerequisites
