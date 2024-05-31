@@ -1,0 +1,23 @@
+; Configuration file for BeamNG.Drive web interface
+
+; WARNING : Do not put an equal sign in the password, user name, database name or folder names.
+
+; MySQL database connection
+
+servername=localhost
+username=
+password=
+dbname=gaming
+
+; Folder Location
+
+BeamMPFolder=/home/ixeygrek/Game_Servers/BeamNG/
+WebServerRootFolder=/var/www/html/serveradmin/
+
+; Other
+
+beammpservice=BeamNG.service
+
+; Interface language (fr, en, de or es)
+
+lang=en
