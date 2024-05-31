@@ -23,7 +23,7 @@ A Web interface for the BeamMP multiplayer server
 
 • Only the MAP currently configured on the server is present in the MOD folder, the others are placed in a separate folder to optimize MOD download and loading time.
 
-• Multilingual management of the interface (and only the interface, not database content such as MOD names and descriptions). For the moment, English and French only. Any language can be added to the lang file.
+• Multilingual management of the interface (and only the interface, not database content such as MOD names and descriptions). For the moment, english, french, spanish and german only. Any language can be added to the lang file.
 
 # Installation
 ## prerequisites
