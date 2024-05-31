@@ -1,0 +1,185 @@
+/* Reset CSS pour s'assurer que tous les navigateurs commencent avec un style uniforme */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Conteneur principal pour centrer le contenu */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* Style pour le menu en haut de la page */
+.menu {
+    background: #007bff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.menu a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #ddd;
+}
+
+/* Styles pour les sections de contenu */
+.content-section {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.map-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.map-entry img {
+    max-width: 300px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.map-entry div {
+    flex: 1;
+}
+
+.map-entry h3 {
+    margin: 0 0 10px 0;
+    text-align: center;
+    font-size: 200%; /* Double la taille de la police par rapport à la taille de base */
+}
+
+.map-entry p {
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.left-image, .right-image {
+    max-width: 300px;
+    height: auto;
+}
+
+.map-info {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Vous pouvez ajuster la marge entre les éléments si nécessaire */
+.left-image {
+    margin-right: 20px;
+}
+
+.right-image {
+    margin-left: 20px;
+}
+
+/* Style pour les boutons Sélectionner */
+.select-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: block;
+    width: fit-content;
+    margin: auto; /* Centrer le bouton */
+}
+
+.select-button:hover {
+    background-color: #0056b3;
+}
+
+/* Styles supplémentaires pour ajuster la mise en page ou ajouter des effets visuels peuvent être ajoutés ici */
+
+.delete-button {
+    background-color: #ff0000; /* Rouge */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: block;
+    width: fit-content;
+    margin: auto; /* Centrer le bouton */
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+}
+
+/* Styles pour le formulaire d'ajout de MOD */
+.form-style {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-style .form-group {
+    margin-bottom: 15px;
+}
+
+.form-style label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.form-style input, .form-style select, .form-style textarea {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.form-style button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    align-self: flex-end;
+}
+
+.form-style button:hover {
+    background-color: #218838;
+}
+
+progress {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#statusMessage {
+    margin-top: 10px;
+}
