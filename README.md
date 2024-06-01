@@ -52,6 +52,8 @@ A Web interface for the BeamMP multiplayer server
 
 • Open the Web server port to make your site accessible on the Internet.
 
+• A BeamMP server, even if it seems a bit obvious... (https://beammp.com/)
+
 ## Installation guide
 **If you need help with the installation, don't hesitate to contact me on the dedicated Telegram channel: https://t.me/+VwELwQa3Cb8yMjhk**
 
