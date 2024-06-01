@@ -199,3 +199,5 @@ at Map level = configure the correct MAP, so the line looks like this:
 • Creating an installation script
 
 • Support for MAPs with multiple variants in the zip file. For the moment it's possible to do this by manually inserting the other variants in the database (or perhaps by uploading the same MAP several times by changing its ID in the MOD upload form. But I haven't tried).
+
+• A button to update the BeamMP server with a single click!
