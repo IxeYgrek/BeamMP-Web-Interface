@@ -59,13 +59,13 @@ A Web interface for the BeamMP multiplayer server
 
 In our example, we'll use the following information:
 
-- The root folder of the Web server where the Web interface files are located is: /var/www/html/
-- The root folder of the BeamMP server is: /home/user/BeamMP/
-- The database is called “gaming”.
-- The database user is “db_user”.
-- The database password is “db_password”.
-- The default Apache user is www-data
-- The BeamMP server service is called “BeamMP”.
+- The root folder of the Web server where the Web interface files are located is: **/var/www/html/**
+- The root folder of the BeamMP server is: **/home/user/BeamMP/**
+- The database is called “**gaming**”.
+- The database user is “**db_user**”.
+- The database password is “**db_password**”.
+- The default Apache user is **www-data**
+- The BeamMP server service is called “**BeamMP**”.
 
 **So you need to modify the information to suit your environment.**
 
