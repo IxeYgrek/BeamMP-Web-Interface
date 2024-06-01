@@ -1,0 +1,8 @@
+AuthType Basic
+AuthName "Zone restreinte"
+AuthUserFile /var/www/.htpasswd
+Require valid-user
+<Files "config">
+    Order Allow,Deny
+    Deny from all
+</Files>
