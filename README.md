@@ -55,6 +55,140 @@ A Web interface for the BeamMP multiplayer server
 ## Installation guide
 **If you need help with the installation, don't hesitate to contact me on the dedicated Telegram channel: https://t.me/+VwELwQa3Cb8yMjhk**
 
+### 0 - Information used for the example
+
+In our example, we'll use the following information:
+
+- The root folder of the Web server where the Web interface files are located is: /var/www/html/
+- The root folder of the BeamMP server is: /home/user/BeamMP/
+- The database is called “gaming”.
+- The database user is “db_user”.
+- The database password is “db_password”.
+- The default Apache user is www-data
+- The BeamMP server service is called “BeamMP”.
+
+**So you need to modify the information to suit your environment.**
+
+**Most operations require root access. It is therefore preferable to follow all the steps as a “root” user.**
+
+### 1 - Retrieve and upload files to the Web server
+
+_Click on the green “<> Code” button at the top of this page, then on “Download ZIP”.
+_Drop the contents of the “BeamMP-Web-Interface-main” folder into the root folder of your Web server (normally /var/www/html). You can also use a dedicated vhost (https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-18-04-quickstart).
+
+### 2 - Create the folder needed to store inactive cards
+
+In your BeamMP server folder, you'll find a “Resources” folder. In this folder, create a new folder called “inactive_map”. In the “Resources” folder, you should now have 3 folders: “Client”, “Server” and “inactive_map”.
+
+    $ cd /home/user/BeamMP/Resources
+    $ mkdir inactive_map
+
+### 3 - Give folders and files the necessary rights
+
+You must grant the necessary rights to the folders and files in the Web interface and BeamMP folder, so that Apache can access them to modify the configuration file and manipulate the MODs.
+
+    $ chmod -R 775 /var/www/html/beamng/ && chown -R www-data:www-data /var/www/html/beamng/ && chmod -R 775 /home/user/BeamMP/ && chown -R www-data:www-data /home/user/BeamMP/
+
+### 4 - Apply execution rights to scripts
+
+    $ chmod +x /var/www/html/beamng/scripts/changemap_script.sh && chmod +x /var/www/html/beamng/scripts/removemod_script.sh && chmod +x /var/www/html/beamng/scripts/uploadmod_script.sh
+
+### 5 - Securing access to the Web interface
+
+In the folder containing the beamng.php and config files, you'll find a file named .htaccess. This file restricts access to authorized users and protects the “config” file.
+You need to create an .htpasswd file outside your Web server folder to create user accounts for access to the Web interface:
+
+To create the file for the first time (replace “username1” with the user name of your choice) :
+
+    $ htpasswd -c /var/www/.htpasswd username1
+
+You will then be prompted to enter a password for the first user.
+
+To add a new user to an existing .htpasswd file (replace “username2” with the username of your choice):
+
+    $ htpasswd /var/www/.htpasswd username2
+
+You will then be asked to enter a password for this new user.
+
+If you've created your .htpasswd file elsewhere, don't forget to change its path in the .htaccess file.
+
+### 6 - Create the database
+
+    $ mysql
+    $ create database gaming;
+    $ exit
+
+### 7 - Create the BeamMP service
+If you haven't already done so, you need to create a service for your BeamMP server. The changemap_script.sh script restarts the service each time the MAP is changed.
+
+    $ sudo nano /etc/systemd/system/BeamMP.service
+
+Paste the following contents into the folder, adapting the path to the server execution script and the user and group running the server.
+
+    $ [Unit]
+    $ Description=Game server for BeamNG.drive
+
+    $ [Service]
+    $ ExecStart=/home/user/BeamMP/run.sh
+    $ Restart=always
+    $ User=user
+    $ Group=user
+    $ Environment=
+
+    $ [Install]
+    $ WantedBy=multi-user.target
+
+(“ctrl x” then “y” to quit and save changes)
+
+Start the service and activate it at system startup:
+
+    $ systemctl daemon-reload
+    $ systemctl start BeamMP
+    $ systemctl enable BeamMP
+
+### 8 - Set up the configuration file
+
+    $ nano /var/www/html/beamng/config
+
+Add or replace all the information in the configuration file to suit your environment:
+
+**WARNING: Do not put an equal sign (=) in the password, user name, database name or folder names.**
+
+servername = corresponds to the MySQL server name. Normally you'd leave this as “localhost”.
+username = corresponds to the user name with access to the database
+password = corresponds to the password of the user accessing the database
+dbname = corresponds to the database name. If you haven't changed it in relation to this documentation, leave it as “gaming”.
+
+BeamMPFolder = corresponds to the folder containing BeamMP server files
+WebServerRootFolder = corresponds to the folder containing the Web interface files
+
+**WARNING : make sure the path begins and ends with a slash “/”.**
+
+beammpservice = corresponds to the name of the BeamMP service we created in the previous step.
+lang = corresponds to the language of the Web interface.
+
+### 9 - Add default MAPs to the database
+
+I propose 4 SQL dumps in 4 different languages, allowing you to add the game's default maps to the database:
+
+    $ cd /var/www/html/
+    $ mysql gaming < gaming_EN.sql
+
+(Replace “EN” with “FR”, “DE” or “ES” depending on the language you require).
+
+### 10 - Configuring the “driver_training” map in the BeamMP conf file
+
+In the database, the default map configured in the dump we loaded above is driver_training. It is therefore necessary to configure this map in the config file once for the MAP change script to work:
+
+    $ nano /home/user/BeamMP/ServerConfig.toml
+
+at Map level = configure the correct MAP, so the line looks like this:
+
+    $ Map = “/levels/driver_training/info.json”
+
+
+**That's it, your Web interface is up and running. Don't forget to open the Apache server port if you want to make it accessible to other trusted players.**
+
 # To-do list
 
 **Here are the things I'd like to add. But I don't promise to ever do it (especially the installation script)**
