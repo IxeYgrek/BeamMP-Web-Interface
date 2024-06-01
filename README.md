@@ -63,8 +63,6 @@ In our example, we'll use the following information:
 
 - The root folder of the Web server where the Web interface files are located is: **/var/www/html/**
 - The root folder of the BeamMP server is: **/home/user/BeamMP/**
-- The database is called “**gaming**”.
-- The database user is “**db_user**”.
 - The database password is “**db_password**”.
 - The default Apache user is **www-data**
 - The BeamMP server service is called “**BeamMP**”.
@@ -79,7 +77,7 @@ Click on the green “<> Code” button at the top of this page, then on “Down
 
 Drop the contents of the “BeamMP-Web-Interface-main” folder into the root folder of your Web server (normally /var/www/html). You can also use a dedicated vhost (https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-18-04-quickstart).
 
-### 2 - Create the folder needed to store inactive cards
+### 2 - Create the folder needed to store inactive Maps
 
 In your BeamMP server folder, you'll find a “Resources” folder. In this folder, create a new folder called “inactive_map”. In the “Resources” folder, you should now have 3 folders: “Client”, “Server” and “inactive_map”.
 
