@@ -73,8 +73,9 @@ In our example, we'll use the following information:
 
 ### 1 - Retrieve and upload files to the Web server
 
-_Click on the green “<> Code” button at the top of this page, then on “Download ZIP”.
-_Drop the contents of the “BeamMP-Web-Interface-main” folder into the root folder of your Web server (normally /var/www/html). You can also use a dedicated vhost (https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-18-04-quickstart).
+Click on the green “<> Code” button at the top of this page, then on “Download ZIP”.
+
+Drop the contents of the “BeamMP-Web-Interface-main” folder into the root folder of your Web server (normally /var/www/html). You can also use a dedicated vhost (https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-18-04-quickstart).
 
 ### 2 - Create the folder needed to store inactive cards
 
@@ -110,7 +111,7 @@ To add a new user to an existing .htpasswd file (replace “username2” with th
 
 You will then be asked to enter a password for this new user.
 
-If you've created your .htpasswd file elsewhere, don't forget to change its path in the .htaccess file.
+**If you've created your .htpasswd file elsewhere, don't forget to change its path in the .htaccess file.**
 
 ### 6 - Create the database
 
