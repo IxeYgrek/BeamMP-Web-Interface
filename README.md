@@ -155,18 +155,18 @@ Add or replace all the information in the configuration file to suit your enviro
 
 **WARNING: Do not put an equal sign (=) in the password, user name, database name or folder names.**
 
-servername = corresponds to the MySQL server name. Normally you'd leave this as “localhost”.
-username = corresponds to the user name with access to the database
-password = corresponds to the password of the user accessing the database
-dbname = corresponds to the database name. If you haven't changed it in relation to this documentation, leave it as “gaming”.
+- servername = corresponds to the MySQL server name. Normally you'd leave this as “localhost”.
+- username = corresponds to the user name with access to the database
+- password = corresponds to the password of the user accessing the database
+- dbname = corresponds to the database name. If you haven't changed it in relation to this documentation, leave it as “gaming”.
 
-BeamMPFolder = corresponds to the folder containing BeamMP server files
-WebServerRootFolder = corresponds to the folder containing the Web interface files
+- BeamMPFolder = corresponds to the folder containing BeamMP server files
+- WebServerRootFolder = corresponds to the folder containing the Web interface files
 
 **WARNING : make sure the path begins and ends with a slash “/”.**
 
-beammpservice = corresponds to the name of the BeamMP service we created in the previous step.
-lang = corresponds to the language of the Web interface.
+- beammpservice = corresponds to the name of the BeamMP service we created in the previous step.
+- lang = corresponds to the language of the Web interface.
 
 ### 9 - Add default MAPs to the database
 
