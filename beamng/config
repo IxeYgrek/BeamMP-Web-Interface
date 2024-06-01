@@ -10,6 +10,7 @@ password=
 dbname=gaming
 
 ; Folder Location
+; WARING : make sure the path begins and ends with a slash “/”
 
 BeamMPFolder=/home/user/BeamMP/
 WebServerRootFolder=/var/www/html/
