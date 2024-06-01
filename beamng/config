@@ -11,12 +11,12 @@ dbname=gaming
 
 ; Folder Location
 
-BeamMPFolder=/home/ixeygrek/Game_Servers/BeamNG/
-WebServerRootFolder=/var/www/html/serveradmin/
+BeamMPFolder=/home/user/BeamMP/
+WebServerRootFolder=/var/www/html/
 
 ; Other
 
-beammpservice=BeamNG.service
+beammpservice=BeamMP.service
 
 ; Interface language (fr, en, de or es)
 
