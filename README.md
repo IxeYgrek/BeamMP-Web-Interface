@@ -71,6 +71,8 @@ In our example, we'll use the following information:
 
 **Most operations require root access. It is therefore preferable to follow all the steps as a “root” user.**
 
+**commands and lines to be added to files must not contain the $ at the beginning of the line.**
+
 ### 1 - Retrieve and upload files to the Web server
 
 Click on the green “<> Code” button at the top of this page, then on “Download ZIP”.
@@ -187,6 +189,25 @@ at Map level = configure the correct MAP, so the line looks like this:
 
     $ Map = “/levels/driver_training/info.json”
 
+### 11 - Modifying the sudoers file
+
+To enable the user running Apache to execute scripts and commands without having root rights (which requires entering a root password), you need to add the commands he is authorized to execute to the sudoer file
+
+    $ sudo visudo
+
+Add the following lines (without $) to the :
+
+    $ www-data ALL=NOPASSWD: /bin/systemctl restart BeamMP.service
+    $ www-data ALL=NOPASSWD: /bin/systemctl start BeamMP.service
+    $ www-data ALL=NOPASSWD: /bin/systemctl stop BeamMP.service
+    $ www-data ALL=NOPASSWD: /bin/chmod +x /home/user/BeamMP/BeamMP-Server.ubuntu*
+    $ www-data ALL=NOPASSWD: /var/www/html/beamng/scripts/changemap_script.sh
+    $ www-data ALL=NOPASSWD: /var/www/html/beamng/scripts/removemod_script.sh
+    $ www-data ALL=NOPASSWD: /var/www/html/beamng/scripts/updateserver_script.sh
+    $ www-data ALL=NOPASSWD: /var/www/html/beamng/scripts/uploadmod_script.sh
+
+
+**Warning: don't forget to replace the BeamMP service name, the BeamMP server folder /home/user/BeamMP/ and the Web server folder /var/www/html/ with whatever is appropriate for your system.**
 
 **That's it, your Web interface is up and running. Don't forget to open the Apache server port if you want to make it accessible to other trusted players.**
 
