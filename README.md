@@ -71,8 +71,6 @@ In our example, we'll use the following information:
 
 **Most operations require root access. It is therefore preferable to follow all the steps as a “root” user.**
 
-**commands and lines to be added to files must not contain the $ at the beginning of the line.**
-
 ### 1 - Retrieve and upload files to the Web server
 
 Click on the green “<> Code” button at the top of this page, then on “Download ZIP”.
@@ -90,11 +88,11 @@ In your BeamMP server folder, you'll find a “Resources” folder. In this fold
 
 You must grant the necessary rights to the folders and files in the Web interface and BeamMP folder, so that Apache can access them to modify the configuration file and manipulate the MODs.
 
-    $ chmod -R 775 /var/www/html/beamng/ && chown -R www-data:www-data /var/www/html/beamng/ && chmod -R 775 /home/user/BeamMP/ && chown -R www-data:www-data /home/user/BeamMP/
+    chmod -R 775 /var/www/html/beamng/ && chown -R www-data:www-data /var/www/html/beamng/ && chmod -R 775 /home/user/BeamMP/ && chown -R www-data:www-data /home/user/BeamMP/
 
 ### 4 - Apply execution rights to scripts
 
-    $ chmod +x /var/www/html/beamng/scripts/changemap_script.sh && chmod +x /var/www/html/beamng/scripts/removemod_script.sh && chmod +x /var/www/html/beamng/scripts/uploadmod_script.sh
+    chmod +x /var/www/html/beamng/scripts/changemap_script.sh && chmod +x /var/www/html/beamng/scripts/removemod_script.sh && chmod +x /var/www/html/beamng/scripts/uploadmod_script.sh
 
 ### 5 - Securing access to the Web interface
 
@@ -103,13 +101,13 @@ You need to create an .htpasswd file outside your Web server folder to create us
 
 To create the file for the first time (replace “username1” with the user name of your choice) :
 
-    $ htpasswd -c /var/www/.htpasswd username1
+    htpasswd -c /var/www/.htpasswd username1
 
 You will then be prompted to enter a password for the first user.
 
 To add a new user to an existing .htpasswd file (replace “username2” with the username of your choice):
 
-    $ htpasswd /var/www/.htpasswd username2
+    htpasswd /var/www/.htpasswd username2
 
 You will then be asked to enter a password for this new user.
 
@@ -117,41 +115,41 @@ You will then be asked to enter a password for this new user.
 
 ### 6 - Create the database
 
-    $ mysql
-    $ create database gaming;
-    $ exit
+    mysql
+    create database gaming;
+    exit
 
 ### 7 - Create the BeamMP service
 If you haven't already done so, you need to create a service for your BeamMP server. The changemap_script.sh script restarts the service each time the MAP is changed.
 
-    $ sudo nano /etc/systemd/system/BeamMP.service
+    sudo nano /etc/systemd/system/BeamMP.service
 
 Paste the following contents into the folder, adapting the path to the server execution script and the user and group running the server.
 
-    $ [Unit]
-    $ Description=Game server for BeamNG.drive
+    [Unit]
+    Description=Game server for BeamNG.drive
 
-    $ [Service]
-    $ ExecStart=/home/user/BeamMP/run.sh
-    $ Restart=always
-    $ User=user
-    $ Group=user
-    $ Environment=
+    [Service]
+    ExecStart=/home/user/BeamMP/run.sh
+    Restart=always
+    User=user
+    Group=user
+    Environment=
 
-    $ [Install]
-    $ WantedBy=multi-user.target
+    [Install]
+    WantedBy=multi-user.target
 
 (“ctrl x” then “y” to quit and save changes)
 
 Start the service and activate it at system startup:
 
-    $ systemctl daemon-reload
-    $ systemctl start BeamMP
-    $ systemctl enable BeamMP
+    systemctl daemon-reload
+    systemctl start BeamMP
+    systemctl enable BeamMP
 
 ### 8 - Set up the configuration file
 
-    $ nano /var/www/html/beamng/config
+    nano /var/www/html/beamng/config
 
 Add or replace all the information in the configuration file to suit your environment:
 
@@ -174,8 +172,8 @@ Add or replace all the information in the configuration file to suit your enviro
 
 I propose 4 SQL dumps in 4 different languages, allowing you to add the game's default maps to the database:
 
-    $ cd /var/www/html/
-    $ mysql gaming < gaming_EN.sql
+    cd /var/www/html/
+    mysql gaming < gaming_EN.sql
 
 (Replace “EN” with “FR”, “DE” or “ES” depending on the language you require).
 
@@ -183,28 +181,28 @@ I propose 4 SQL dumps in 4 different languages, allowing you to add the game's d
 
 In the database, the default map configured in the dump we loaded above is driver_training. It is therefore necessary to configure this map in the config file once for the MAP change script to work:
 
-    $ nano /home/user/BeamMP/ServerConfig.toml
+    nano /home/user/BeamMP/ServerConfig.toml
 
 at Map level = configure the correct MAP, so the line looks like this:
 
-    $ Map = “/levels/driver_training/info.json”
+    Map = “/levels/driver_training/info.json”
 
 ### 11 - Modifying the sudoers file
 
 To enable the user running Apache to execute scripts and commands without having root rights (which requires entering a root password), you need to add the commands he is authorized to execute to the sudoer file
 
-    $ sudo visudo
+    sudo visudo
 
-Add the following lines (without $) to the :
+Add the following lines to the :
 
-    $ www-data ALL=NOPASSWD: /bin/systemctl restart BeamMP.service
-    $ www-data ALL=NOPASSWD: /bin/systemctl start BeamMP.service
-    $ www-data ALL=NOPASSWD: /bin/systemctl stop BeamMP.service
-    $ www-data ALL=NOPASSWD: /bin/chmod +x /home/user/BeamMP/BeamMP-Server.ubuntu*
-    $ www-data ALL=NOPASSWD: /var/www/html/beamng/scripts/changemap_script.sh
-    $ www-data ALL=NOPASSWD: /var/www/html/beamng/scripts/removemod_script.sh
-    $ www-data ALL=NOPASSWD: /var/www/html/beamng/scripts/updateserver_script.sh
-    $ www-data ALL=NOPASSWD: /var/www/html/beamng/scripts/uploadmod_script.sh
+    www-data ALL=NOPASSWD: /bin/systemctl restart BeamMP.service
+    www-data ALL=NOPASSWD: /bin/systemctl start BeamMP.service
+    www-data ALL=NOPASSWD: /bin/systemctl stop BeamMP.service
+    www-data ALL=NOPASSWD: /bin/chmod +x /home/user/BeamMP/BeamMP-Server.ubuntu*
+    www-data ALL=NOPASSWD: /var/www/html/beamng/scripts/changemap_script.sh
+    www-data ALL=NOPASSWD: /var/www/html/beamng/scripts/removemod_script.sh
+    www-data ALL=NOPASSWD: /var/www/html/beamng/scripts/updateserver_script.sh
+    www-data ALL=NOPASSWD: /var/www/html/beamng/scripts/uploadmod_script.sh
 
 
 **Warning: don't forget to replace the BeamMP service name, the BeamMP server folder /home/user/BeamMP/ and the Web server folder /var/www/html/ with whatever is appropriate for your system.**
