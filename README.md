@@ -83,8 +83,8 @@ Drop the contents of the “BeamMP-Web-Interface-main” folder into the root fo
 
 In your BeamMP server folder, you'll find a “Resources” folder. In this folder, create a new folder called “inactive_map”. In the “Resources” folder, you should now have 3 folders: “Client”, “Server” and “inactive_map”.
 
-    $ cd /home/user/BeamMP/Resources
-    $ mkdir inactive_map
+    cd /home/user/BeamMP/Resources
+    mkdir inactive_map
 
 ### 3 - Give folders and files the necessary rights
 
