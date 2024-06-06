@@ -23,6 +23,8 @@ A Web interface for the BeamMP multiplayer server
 
 • Only the MAP currently configured on the server is present in the MOD folder, the others are placed in a separate folder to optimize MOD download and loading time.
 
+• A button to update the BeamMP server with a single click!
+
 • Multilingual management of the interface (and only the interface, not database content such as MOD names and descriptions). For the moment english, french, spanish and german only. Any language can be added to the lang file.
 
 # Preview
@@ -218,5 +220,3 @@ Add the following lines to the :
 • Creating an installation script
 
 • Support for MAPs with multiple variants in the zip file. For the moment it's possible to do this by manually inserting the other variants in the database (or perhaps by uploading the same MAP several times by changing its ID in the MOD upload form. But I haven't tried).
-
-• A button to update the BeamMP server with a single click!
