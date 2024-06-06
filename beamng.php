@@ -152,6 +152,9 @@
         </div>
     </section>
 
+<!-- Bouton Mettre à jour -->
+<button type='button' class='delete-button' onclick='updateServer()'><?php echo getLangString('updatebutton'); ?></button>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             toggleMapField();
@@ -227,6 +230,19 @@
             xhttp.open("POST", "beamng/removemod_script.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("ModChemin=" + encodeURIComponent(ModChemin));
+        }
+
+        function updateServer() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                    window.location.reload();
+                }
+            };
+            xhttp.open("POST", "beamng/updateserver_script.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send();
         }
     </script>
 </body>
