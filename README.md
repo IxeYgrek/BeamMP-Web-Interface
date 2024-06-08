@@ -195,7 +195,7 @@ To enable the user running Apache to execute scripts and commands without having
 
     sudo visudo
 
-Add the following lines to the :
+Add the following lines to the file :
 
     www-data ALL=NOPASSWD: /bin/systemctl restart BeamMP.service
     www-data ALL=NOPASSWD: /bin/systemctl start BeamMP.service
