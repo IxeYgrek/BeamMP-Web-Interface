@@ -8,6 +8,7 @@ servername=localhost
 username=
 password=
 dbname=gaming
+tablename=beamng_mod
 
 ; Folder Location
 ; WARING : make sure the path begins and ends with a slash “/”
