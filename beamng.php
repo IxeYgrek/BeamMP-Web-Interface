@@ -7,6 +7,15 @@
 </head>
 <body>
 
+<!--
+    <div class="menu">
+        <a href="beamng.php">Server 1</a>
+        <a href="beamng.php">Server 2</a>
+        <a href="beamng.php">Server 3</a>
+    </div>
+-->
+
+
     <?php
     // Lire le fichier de configuration
     $config = parse_ini_file('beamng/config');
@@ -39,6 +48,7 @@
         $username = $config['username'];
         $password = $config['password'];
         $dbname = $config['dbname'];
+        $tablename = $config['tablename'];
 
         $title = getLangString($title_key);
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -47,7 +57,7 @@
             die("Échec de la connexion : " . $conn->connect_error);
         }
 
-        $sql = "SELECT nom, image, chemin, preview, description, id_beamng, type, map_active, map_officielle, mod_actif FROM beamng_mod WHERE $condition";
+        $sql = "SELECT nom, image, chemin, preview, description, id_beamng, type, map_active, map_officielle, mod_actif FROM $tablename WHERE $condition";
         $result = $conn->query($sql);
 
         $sectionId = preg_replace('/\s+/', '', strtolower($title));
