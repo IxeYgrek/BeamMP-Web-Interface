@@ -14,6 +14,7 @@ config_file="$(dirname "$0")/../config"
 username=$(grep '^username=' "$config_file" | cut -d "=" -f2 | tr -d '[:space:]')
 password=$(grep '^password=' "$config_file" | cut -d "=" -f2 | tr -d '[:space:]')
 dbname=$(grep '^dbname=' "$config_file" | cut -d "=" -f2 | tr -d '[:space:]')
+tablename=$(grep '^tablename=' "$config_file" | cut -d "=" -f2 | tr -d '[:space:]')
 
 # Variables emplacement des dossiers
 
@@ -22,8 +23,8 @@ RootFolder=$(grep '^WebServerRootFolder=' "$config_file" | cut -d "=" -f2 | tr -
 
 # On récupère le chemin de l'image du MOD et de la preview
 
-imagemod=$(mysql -D $dbname -u$username --password="$password" -N -e "select image from beamng_mod where chemin = '$1';")
-imagepreview=$(mysql -D $dbname -u$username --password="$password" -N -e "select preview from beamng_mod where chemin = '$1';")
+imagemod=$(mysql -D $dbname -u$username --password="$password" -N -e "select image from $tablename where chemin = '$1';")
+imagepreview=$(mysql -D $dbname -u$username --password="$password" -N -e "select preview from $tablename where chemin = '$1';")
 
 # On supprime le MOD et les images
 
@@ -33,4 +34,4 @@ rm -f ${RootFolder}${imagepreview}
 
 # On supprime le MOD de la base de donnée
 
-mysql -D $dbname -u$username --password="$password" -N -e "DELETE FROM beamng_mod WHERE chemin = '$1';"
+mysql -D $dbname -u$username --password="$password" -N -e "DELETE FROM $tablename WHERE chemin = '$1';"
