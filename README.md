@@ -66,6 +66,7 @@ In our example, we'll use the following information:
 - The root folder of the Web server where the Web interface files are located is: **/var/www/html/**
 - The root folder of the BeamMP server is: **/home/user/BeamMP/**
 - The database is called “**gaming**”.
+- The table database is called “**beamng_mod**”.
 - The default Apache user is **www-data**
 - The BeamMP server service is called “**BeamMP**”.
 
@@ -161,6 +162,7 @@ Add or replace all the information in the configuration file to suit your enviro
 - username = corresponds to the user name with access to the database
 - password = corresponds to the password of the user accessing the database
 - dbname = corresponds to the database name. If you haven't changed it in relation to this documentation, leave it as “gaming”.
+- tablename = Corresponds to the table name in the database. Useful if you want to host several instances.
 
 - BeamMPFolder = corresponds to the folder containing BeamMP server files
 - WebServerRootFolder = corresponds to the folder containing the Web interface files
@@ -173,6 +175,13 @@ Add or replace all the information in the configuration file to suit your enviro
 ### 9 - Add default MAPs to the database
 
 I propose 4 SQL dumps in 4 different languages, allowing you to add the game's default maps to the database:
+
+**WARNING (optionnal) : If you have changed the name of the default table used in this documentation (beamng_mod) and/or wish to host multiple instances, change the table name with a sed command before importing the maps. Replace “new_table_name” with the name of the table you want to use.**
+
+    cd /var/www/html/
+    sed -i 's/beamng_mod/new_table_name/g' chemin/vers/gaming_EN.sql
+
+Import the mySQL dump containing the default maps :
 
     cd /var/www/html/
     mysql gaming < gaming_EN.sql
