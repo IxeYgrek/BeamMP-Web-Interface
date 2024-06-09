@@ -18,6 +18,7 @@ config_file="$(dirname "$0")/../config"
 username=$(grep '^username=' "$config_file" | cut -d "=" -f2 | tr -d '[:space:]')
 password=$(grep '^password=' "$config_file" | cut -d "=" -f2 | tr -d '[:space:]')
 dbname=$(grep '^dbname=' "$config_file" | cut -d "=" -f2 | tr -d '[:space:]')
+tablename=$(grep '^tablename=' "$config_file" | cut -d "=" -f2 | tr -d '[:space:]')
 
 # Variables emplacement des dossiers
 
@@ -58,7 +59,7 @@ fi
 
 # On inscrit le MOD en base de donnée
 
-mysql -D $dbname -u$username --password="$password" -N -e "SET NAMES 'utf8mb4';INSERT INTO gaming.beamng_mod (nom, description, type, chemin, image, preview, id_beamng, map_active, map_officielle, mod_actif) VALUES ('$escaped_modname', '$escaped_moddescription', '$modtype', '${BeamMPFolder}Resources/$mod_folder/$escaped_modzip', '/beamng/image_$modtype/image_$escaped_modzip.jpg', '$escaped_modpreview', '$idbeamng', 0, 0, 0);"
+mysql -D $dbname -u$username --password="$password" -N -e "SET NAMES 'utf8mb4';INSERT INTO ${dbname}.${tablename} (nom, description, type, chemin, image, preview, id_beamng, map_active, map_officielle, mod_actif) VALUES ('$escaped_modname', '$escaped_moddescription', '$modtype', '${BeamMPFolder}Resources/$mod_folder/$escaped_modzip', '/beamng/image_$modtype/image_$escaped_modzip.jpg', '$escaped_modpreview', '$idbeamng', 0, 0, 0);"
 
 # On renomme l'image du MOD et on la déplace au bon endroit selon le type de MOD
 
