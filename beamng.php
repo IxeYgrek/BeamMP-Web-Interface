@@ -77,7 +77,7 @@
                 if ($title_key == "mapavailableoff" && $showSelectButton) {
                     echo "<button type='button' class='select-button' onclick=\"executeScript('" . htmlspecialchars($row["id_beamng"]) . "')\">" . getLangString('selectmap') . "</button>";
                 } elseif ($title_key == "mapavailablemod") {
-                    echo "<button type='button' class='select-button' onclick=\"executeScript('" . htmlspecialchars($row["id_beamng"]) . "')\">" . getLangString('selectmap') . "</button>";
+                    echo "<button type='button' class='select-button' onclick=\"executeScript('" . htmlspecialchars($row["id_beamng"]) . "')\">" . getLangString('selectmap') . "</button>&nbsp;";
                     echo "<button type='button' class='delete-button' onclick=\"executeScriptRemoveMod('" . htmlspecialchars($row["chemin"]) . "')\">" . getLangString('delmod') . "</button>";
                 } elseif ($title_key == "caravailable") {
                     echo "<button type='button' class='delete-button' onclick=\"executeScriptRemoveMod('" . htmlspecialchars($row["chemin"]) . "')\">" . getLangString('delmod') . "</button>";
