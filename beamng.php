@@ -7,12 +7,11 @@
 </head>
 <body>
 
+<div class="menu">
+    <a href="../index.php" class="menu-link">Accueil</a>
+    <a href="beamng.php" class="menu-link">Serveur BeamMP</a>
+</div>
 <!--
-    <div class="menu">
-        <a href="beamng.php">Server 1</a>
-        <a href="beamng.php">Server 2</a>
-        <a href="beamng.php">Server 3</a>
-    </div>
 -->
 
 
@@ -68,8 +67,13 @@
 
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
+                $script_path = $_SERVER['SCRIPT_NAME'];
+                $script_dir = dirname($script_path);
+                $image_path = $script_dir . htmlspecialchars($row["image"]);
+                $preview_path = $script_dir . htmlspecialchars($row["preview"]);
+
                 echo "<div class='map-entry'>";
-                echo "<img src='" . htmlspecialchars($row["image"]) . "' alt='Image principale' class='left-image'>";
+                echo "<img src='" . $image_path . "' alt='Image principale' class='left-image'>";
                 echo "<div class='map-info'>";
                 echo "<h3>" . htmlspecialchars($row["nom"]) . "</h3>";
                 echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
@@ -87,7 +91,7 @@
 
                 echo "</div>";
                 if (!empty($row["preview"])) {
-                    echo "<img src='" . htmlspecialchars($row["preview"]) . "' alt='Preview' class='right-image'>";
+                    echo "<img src='" . $preview_path . "' alt='Preview' class='right-image'>";
                 }
                 echo "</div>";
                 if ($title_key != "actual") {
