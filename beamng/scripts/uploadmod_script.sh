@@ -67,7 +67,7 @@ mv "${RootFolder}beamng/TEMP/${modimage}" "${RootFolder}beamng/image_${modtype}/
 
 # On renomme la  preview de la MAP si elle existe et on la déplace au bon endroit
 
-if [ -z "$modpreview" ]; then
+if [ -n "$modpreview" ]; then
 mv "${RootFolder}beamng/TEMP/${modpreview}" "${RootFolder}beamng/preview_map/image_${modzip}.jpg"
 fi
 
