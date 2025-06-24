@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <meta charset="UTF-8">
     <title>Admin BeamNG</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -169,95 +170,168 @@
 <!-- Bouton Mettre à jour -->
 <button type='button' class='delete-button' onclick='updateServer()'><?php echo getLangString('updatebutton'); ?></button>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            toggleMapField();
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    toggleMapField();
 
-            document.getElementById('uploadForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-                var formData = new FormData(this);
-                var xhr = new XMLHttpRequest();
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        var xhr = new XMLHttpRequest();
 
-                xhr.open('POST', 'beamng/uploadmod_script.php', true);
+        xhr.open('POST', 'beamng/uploadmod_script.php', true);
 
-                xhr.upload.onprogress = function(event) {
-                    if (event.lengthComputable) {
-                        var percentComplete = (event.loaded / event.total) * 100;
-                        document.getElementById('uploadProgress').value = percentComplete;
-                    }
-                };
-
-                xhr.onload = function() {
-                    if (xhr.status == 200) {
-                        var response = JSON.parse(xhr.responseText);
-                        document.getElementById('statusMessage').innerHTML = response.message;
-                    } else {
-                        document.getElementById('statusMessage').innerHTML = '<?php echo getLangString('uploaderror'); ?>';
-                    }
-                };
-
-                xhr.send(formData);
-            });
-        });
-
-        function toggleSection(sectionId) {
-            var section = document.getElementById(sectionId);
-            section.style.display = section.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function toggleMapField() {
-            var modType = document.getElementById("modType").value;
-            var mapIdField = document.getElementById("mapIdField");
-            var mapTrackField = document.getElementById("mapTrackField");
-            if (modType === "map") {
-                mapIdField.style.display = 'block';
-                mapTrackField.style.display = 'block';
-                document.getElementById("mapId").required = true;
-            } else {
-                mapIdField.style.display = 'none';
-                mapTrackField.style.display = 'none';
-                document.getElementById("mapId").required = false;
+        xhr.upload.onprogress = function(event) {
+            if (event.lengthComputable) {
+                var percentComplete = (event.loaded / event.total) * 100;
+                document.getElementById('uploadProgress').value = percentComplete;
             }
-        }
+        };
 
-        function executeScript(mapId) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText);
-                    window.location.reload();
-                }
-            };
-            xhttp.open("POST", "beamng/changemap_script.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("mapId=" + mapId);
-        }
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                var response = JSON.parse(xhr.responseText);
+                document.getElementById('statusMessage').innerHTML = response.message;
+            } else {
+                document.getElementById('statusMessage').innerHTML = '<?php echo getLangString('uploaderror'); ?>';
+            }
+        };
 
-        function executeScriptRemoveMod(ModChemin) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText); // Ajout de logs pour voir la réponse
-                    window.location.reload();
-                }
-            };
-            xhttp.open("POST", "beamng/removemod_script.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("ModChemin=" + encodeURIComponent(ModChemin));
-        }
+        xhr.send(formData);
+    });
 
-        function updateServer() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText);
-                    window.location.reload();
-                }
-            };
-            xhttp.open("POST", "beamng/updateserver_script.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send();
+    // Initialiser la lightbox
+    initLightbox();
+});
+
+function toggleSection(sectionId) {
+    var section = document.getElementById(sectionId);
+    section.style.display = section.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleMapField() {
+    var modType = document.getElementById("modType").value;
+    var mapIdField = document.getElementById("mapIdField");
+    var mapTrackField = document.getElementById("mapTrackField");
+    if (modType === "map") {
+        mapIdField.style.display = 'block';
+        mapTrackField.style.display = 'block';
+        document.getElementById("mapId").required = true;
+    } else {
+        mapIdField.style.display = 'none';
+        mapTrackField.style.display = 'none';
+        document.getElementById("mapId").required = false;
+    }
+}
+
+function executeScript(mapId) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            window.location.reload();
         }
-    </script>
+    };
+    xhttp.open("POST", "beamng/changemap_script.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("mapId=" + mapId);
+}
+
+function executeScriptRemoveMod(ModChemin) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            window.location.reload();
+        }
+    };
+    xhttp.open("POST", "beamng/removemod_script.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("ModChemin=" + encodeURIComponent(ModChemin));
+}
+
+function updateServer() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            window.location.reload();
+        }
+    };
+    xhttp.open("POST", "beamng/updateserver_script.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send();
+}
+
+// === LIGHTBOX FUNCTIONALITY ===
+function initLightbox() {
+    // Créer l'élément lightbox
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()"></button>
+            <img class="lightbox-image" src="" alt="Image en grand">
+        </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    // Ajouter les event listeners aux images
+    const images = document.querySelectorAll('.map-entry img');
+    images.forEach(img => {
+        img.addEventListener('click', function(e) {
+            e.preventDefault();
+            openLightbox(this.src, this.alt);
+        });
+    });
+
+    // Fermer en cliquant sur l'arrière-plan
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Fermer avec la touche Échap
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+}
+
+function openLightbox(imageSrc, imageAlt = '') {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = lightbox.querySelector('.lightbox-image');
+
+    lightboxImage.src = imageSrc;
+    lightboxImage.alt = imageAlt;
+
+    lightbox.classList.add('active');
+    lightbox.classList.remove('closing');
+
+    // Empêcher le scroll du body
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+
+    lightbox.classList.add('closing');
+
+    // Attendre la fin de l'animation avant de cacher
+    setTimeout(() => {
+        lightbox.classList.remove('active');
+        lightbox.classList.remove('closing');
+
+        // Rétablir le scroll du body
+        document.body.style.overflow = 'auto';
+    }, 300);
+}
+</script>
+
+
 </body>
 </html>
+
