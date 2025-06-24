@@ -8,11 +8,12 @@
 </head>
 <body>
 
-<div class="menu">
-    <a href="../index.php" class="menu-link">Accueil</a>
-    <a href="beamng.php" class="menu-link">Serveur BeamMP</a>
-</div>
 <!--
+    <div class="menu">
+        <a href="beamng.php">Server 1</a>
+        <a href="beamng.php">Server 2</a>
+        <a href="beamng.php">Server 3</a>
+    </div>
 -->
 
 
