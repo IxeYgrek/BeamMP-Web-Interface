@@ -28,12 +28,11 @@ A Web interface for the BeamMP multiplayer server
 • Multilingual management of the interface (and only the interface, not database content such as MOD names and descriptions). For the moment english, french, spanish and german only. Any language can be added to the lang file.
 
 # Preview
-![Preview](https://geekz0ne.fr/1.jpg) 
-![Preview 2](https://geekz0ne.fr/20.jpg)
-![Preview 3](https://geekz0ne.fr/30.jpg)
-![Preview 4](https://geekz0ne.fr/40.jpg)
-![Preview 5](https://geekz0ne.fr/50.jpg)
-![Preview 6](https://geekz0ne.fr/60.jpg)
+![Preview](https://xymaster.fr/data/data_for_external_site/beammp_1.png) 
+![Preview 2](https://xymaster.fr/data/data_for_external_site/beammp_2.png)
+![Preview 3](https://xymaster.fr/data/data_for_external_site/beammp_3.png)
+![Preview 4](https://xymaster.fr/data/data_for_external_site/beammp_4.png)
+![Preview 5](https://xymaster.fr/data/data_for_external_site/beammp_5.png)
 
 # Installation
 ## prerequisites
